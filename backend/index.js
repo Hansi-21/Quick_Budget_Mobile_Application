@@ -1,13 +1,20 @@
 const express = require("express");
-const app= express();
 
-const port=3000;
+const mongo = require("mongoose");
 
-app.listen(port);
+const userController = require("./controllers/UserController");
 
-app.get('/hello',(req,res)=>{
-    res.send('hello');
+mongo
+  .connect("mongodb://localhost:27017/QuickBudget")
+  .then(() => {
+    const app = express();
+    app.use(express.json());
+    app.listen(3000);
+    console.log("Success");
 
-
-    // wygdwuhwfjfhskfjfoiwhuhwui
-});
+    app.post("/user", userController.saveUser);
+    app.get("/user", userController.getUser);
+  })
+  .catch((error) => {
+    console.log(error);
+  });

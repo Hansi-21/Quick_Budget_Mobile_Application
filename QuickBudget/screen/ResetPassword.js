@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
 import * as native from 'native-base';
-import {StyleSheet, StatusBar} from 'react-native';
+import {StatusBar, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 StatusBar.setBarStyle('light-content', true);
 StatusBar.setBackgroundColor('#330066');
 
-const Login = () => {
+const ResetPassword = () => {
   const navigation = useNavigation();
 
   return (
@@ -21,7 +21,7 @@ const Login = () => {
           height="100%"
           width="100%"
         />
-        <native.Box height="600px" justifyContent="center" width="300px">
+        <native.Box height="600px" width="300px">
           <native.KeyboardAvoidingView
             flex={1}
             behavior="padding"
@@ -30,12 +30,21 @@ const Login = () => {
           >
             <native.Text
               fontSize="40px"
-              // fontWeight="bold"
               textAlign="center"
               style={styles.title}
               mb={8}
               color="white">
-              Login
+              Reset Password
+            </native.Text>
+
+            <native.Text
+              fontSize="15px"
+              textAlign="center"
+              mb={8}
+              color="white"
+              fontFamily="OtomanopeeOne-Regular">
+              Enter the Email associated with your account and we will send an
+              email with instruction to reset password.
             </native.Text>
 
             <native.Input
@@ -47,54 +56,15 @@ const Login = () => {
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
             />
-            <native.Input
-              width="100%"
-              placeholder="Password"
-              type="password"
-              placeholderTextColor="gray.600"
-              mb={4}
-              borderRadius="30px"
-              bg="rgba(245, 246, 250,0.8)"
-              style={styles.shadow}
-            />
+
             <native.Button
               style={styles.shadow}
               bg="#6b5ff2"
               borderRadius="20px"
-              onPress={() => navigation.navigate('Home')}>
-              Login
+              onPress={() => navigation.navigate('CheckEmail')}>
+              Send Instructions
             </native.Button>
-
-            <native.Pressable
-              onPress={() => navigation.navigate('ResetPassword')}>
-              <native.Text
-                fontSize="15px"
-                textAlign="right"
-                mt={8}
-                color="white">
-                Forgetten Password?
-              </native.Text>
-            </native.Pressable>
           </native.KeyboardAvoidingView>
-          <native.Box>
-            <native.Text
-              fontSize="15px"
-              fontStyle="italic"
-              textAlign="center"
-              color="white">
-              Haven't an Account?
-            </native.Text>
-            <native.Pressable onPress={() => navigation.navigate('SignUp')}>
-              <native.Text
-                fontSize="15px"
-                fontWeight="bold"
-                textAlign="center"
-                color="white"
-                textDecoration="underline">
-                Sign Up
-              </native.Text>
-            </native.Pressable>
-          </native.Box>
         </native.Box>
       </native.Center>
     </native.NativeBaseProvider>
@@ -118,4 +88,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default ResetPassword;

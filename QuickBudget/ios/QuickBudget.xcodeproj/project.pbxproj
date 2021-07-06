@@ -16,6 +16,7 @@
 		ADF338AB354C45A2AD26361A /* Lobster-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7E0E12DC06A348C7BB14E909 /* Lobster-Regular.ttf */; };
 		59C81AE1A53041F9A7419ACF /* PerpectBrightDemoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5D1FD365CD0A440AA195D64E /* PerpectBrightDemoRegular.ttf */; };
 		1C6531C6C245489F91BCC820 /* SummerInCalifornia.otf in Resources */ = {isa = PBXBuildFile; fileRef = F1A8871A00D24A27AE9BB94A /* SummerInCalifornia.otf */; };
+		6F74018331EE4BB5A33728C3 /* OtomanopeeOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9EFCA5231C14C2486B68B3D /* OtomanopeeOne-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		7E0E12DC06A348C7BB14E909 /* Lobster-Regular.ttf */ = {isa = PBXFileReference; name = "Lobster-Regular.ttf"; path = "../asserts/font/Lobster-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		5D1FD365CD0A440AA195D64E /* PerpectBrightDemoRegular.ttf */ = {isa = PBXFileReference; name = "PerpectBrightDemoRegular.ttf"; path = "../asserts/font/PerpectBrightDemoRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		F1A8871A00D24A27AE9BB94A /* SummerInCalifornia.otf */ = {isa = PBXFileReference; name = "SummerInCalifornia.otf"; path = "../asserts/font/SummerInCalifornia.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		D9EFCA5231C14C2486B68B3D /* OtomanopeeOne-Regular.ttf */ = {isa = PBXFileReference; name = "OtomanopeeOne-Regular.ttf"; path = "../asserts/font/OtomanopeeOne-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				7E0E12DC06A348C7BB14E909 /* Lobster-Regular.ttf */,
 				5D1FD365CD0A440AA195D64E /* PerpectBrightDemoRegular.ttf */,
 				F1A8871A00D24A27AE9BB94A /* SummerInCalifornia.otf */,
+				D9EFCA5231C14C2486B68B3D /* OtomanopeeOne-Regular.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				ADF338AB354C45A2AD26361A /* Lobster-Regular.ttf in Resources */,
 				59C81AE1A53041F9A7419ACF /* PerpectBrightDemoRegular.ttf in Resources */,
 				1C6531C6C245489F91BCC820 /* SummerInCalifornia.otf in Resources */,
+				6F74018331EE4BB5A33728C3 /* OtomanopeeOne-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
