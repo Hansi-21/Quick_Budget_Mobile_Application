@@ -1,14 +1,37 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+import React, {useState} from 'react';
 import * as native from 'native-base';
 import {StyleSheet, StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 
 StatusBar.setBarStyle('light-content', true);
 StatusBar.setBackgroundColor('#330066');
 
 const Login = () => {
   const navigation = useNavigation();
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [errmsg, setErrmsg] = useState(false);
+
+  function login() {
+    axios({
+      method: 'GET',
+      url: `http://192.168.152.53:3000/user/${email}/${password}`,
+    })
+      .then(res => {
+        if (!res.data) {
+          setErrmsg(true);
+        } else {
+          setErrmsg(false);
+          navigation.navigate('Home');
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   return (
     <native.NativeBaseProvider>
@@ -46,6 +69,9 @@ const Login = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={email => {
+                setEmail(email);
+              }}
             />
             <native.Input
               width="100%"
@@ -56,12 +82,20 @@ const Login = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={password => {
+                setPassword(password);
+              }}
             />
+            {errmsg ? (
+              <native.Text color="red.500" ml={10} mb={4}>
+                Username or Password Wrong
+              </native.Text>
+            ) : null}
             <native.Button
               style={styles.shadow}
               bg="#6b5ff2"
               borderRadius="20px"
-              onPress={() => navigation.navigate('Home')}>
+              onPress={login}>
               Login
             </native.Button>
 

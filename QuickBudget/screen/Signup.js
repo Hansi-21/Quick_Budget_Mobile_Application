@@ -1,14 +1,74 @@
 /* eslint-disable prettier/prettier */
-import React from 'react';
+/* eslint-disable no-undef */
+/* eslint-disable prettier/prettier */
+
+import React, {useState} from 'react';
 import * as native from 'native-base';
 import {StyleSheet, StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import axios from 'axios';
 
 StatusBar.setBarStyle('light-content', true);
 StatusBar.setBackgroundColor('#330066');
 
 const Signup = () => {
   const navigation = useNavigation();
+
+  const [name, setname] = useState('');
+  const [email, setemail] = useState('');
+  const [contact, setcontact] = useState('');
+  const [password, setpassword] = useState('');
+  const [confirmpassword, setconfirmpassword] = useState('');
+  const [errmsg, seterrmsg] = useState(false);
+  const [errmsgtype, seterrmsgtype] = useState('');
+
+  function isEmailExist() {
+    return axios({
+      method: 'GET',
+      url: `http://192.168.152.53:3000/user/${email}`,
+    })
+      .then(res => {
+        return res.data;
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  function saveUser() {
+    isEmailExist()
+      .then(result => {
+        if (result) {
+          seterrmsg(true);
+          seterrmsgtype('Email already Exist');
+        } else if (password != confirmpassword) {
+          seterrmsg(true);
+          seterrmsgtype('Password Not Match');
+        } else {
+          axios({
+            method: 'POST',
+            url: 'http://192.168.152.53:3000/user',
+            data: {
+              name: name,
+              email: email,
+              contact: contact,
+              password: password,
+            },
+          })
+            .then(res => {
+              if (res.data) {
+                navigation.navigate('Home');
+              }
+            })
+            .catch(error => {
+              console.log(error);
+            });
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
 
   return (
     <native.NativeBaseProvider>
@@ -36,7 +96,6 @@ const Signup = () => {
               color="white">
               Registration
             </native.Text>
-
             <native.Input
               width="100%"
               placeholder="Full Name"
@@ -45,6 +104,9 @@ const Signup = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={name => {
+                setname(name);
+              }}
             />
             <native.Input
               width="100%"
@@ -54,6 +116,9 @@ const Signup = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={email => {
+                setemail(email);
+              }}
             />
             <native.Input
               width="100%"
@@ -63,6 +128,9 @@ const Signup = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={contact => {
+                setcontact(contact);
+              }}
             />
             <native.Input
               width="100%"
@@ -73,6 +141,9 @@ const Signup = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={password => {
+                setpassword(password);
+              }}
             />
             <native.Input
               width="100%"
@@ -83,11 +154,20 @@ const Signup = () => {
               borderRadius="30px"
               bg="rgba(245, 246, 250,0.8)"
               style={styles.shadow}
+              onChangeText={confirmpassword => {
+                setconfirmpassword(confirmpassword);
+              }}
             />
+            {errmsg ? (
+              <native.Text color={'red.500'} ml={12} mb={4}>
+                {errmsgtype}
+              </native.Text>
+            ) : null}
             <native.Button
               style={styles.shadow}
               bg="#6b5ff2"
-              borderRadius="20px">
+              borderRadius="20px"
+              onPress={saveUser}>
               Sign up
             </native.Button>
           </native.KeyboardAvoidingView>
