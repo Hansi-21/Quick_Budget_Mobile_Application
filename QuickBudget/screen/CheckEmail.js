@@ -53,7 +53,7 @@ const Main = () => {
           // fontWeight="bold"
           fontFamily="SummerInCalifornia"
           // onPress={launchMailApp}
-        >
+          onPress={() => navigation.navigate('NewPassword')}>
           Open Email App
         </native.Button>
       </native.Center>

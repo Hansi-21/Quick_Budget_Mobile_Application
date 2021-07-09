@@ -19,14 +19,14 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
-        <Stack.Screen name="AllDetails" component={AllDetails} />
-        <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={Signup} />
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="CheckEmail" component={CheckEmail} />
         <Stack.Screen name="NewPassword" component={NewPassword} />
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="AllDetails" component={AllDetails} />
       </Stack.Navigator>
     </NavigationContainer>
   );

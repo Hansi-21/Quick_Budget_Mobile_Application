@@ -5,6 +5,7 @@ import React, {useState} from 'react';
 import * as native from 'native-base';
 import {StatusBar, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+// import Feather from 'react-native-vector-icons/Feather';
 import Pie from 'react-native-pie';
 import {useNavigation} from '@react-navigation/native';
 
@@ -44,6 +45,7 @@ const Home = () => {
                 accessibilityLabel="More options menu"
                 {...triggerProps}>
                 <native.HamburgerIcon />
+                {/* <Feather name="menu" size="20" color="white" /> */}
               </native.Pressable>
             );
           }}>
