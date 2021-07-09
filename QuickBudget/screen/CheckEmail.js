@@ -1,8 +1,11 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import * as native from 'native-base';
 import {StatusBar} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+// import {launchMailApp} from "@react-native-mail-launcher";
 
 StatusBar.setBarStyle('light-content', true);
 StatusBar.setBackgroundColor('#330066');
@@ -20,6 +23,7 @@ const Main = () => {
         height="100%"
         width="100%"
       />
+
       <native.Center flex={1}>
         <native.Text
           textAlign="center"
@@ -48,7 +52,8 @@ const Main = () => {
           fontSize="20px"
           // fontWeight="bold"
           fontFamily="SummerInCalifornia"
-          onPress={() => navigation.navigate('NewPassword')}>
+          // onPress={launchMailApp}
+        >
           Open Email App
         </native.Button>
       </native.Center>

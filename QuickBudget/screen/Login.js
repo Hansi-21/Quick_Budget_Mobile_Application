@@ -18,7 +18,7 @@ const Login = () => {
   function login() {
     axios({
       method: 'GET',
-      url: `http://192.168.152.53:3000/user/${email}/${password}`,
+      url: `http://192.168.210.53:3000/user/${email}/${password}`,
     })
       .then(res => {
         if (!res.data) {

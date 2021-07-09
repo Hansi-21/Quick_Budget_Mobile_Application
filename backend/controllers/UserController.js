@@ -21,13 +21,13 @@ exports.getLoginDetails = async (req, res) => {
     if (
       req.params.email == data.email &&
       req.params.password == data.password
-    ) {
+    ) {  
       result = true;
     }
   });
   res.send(result);
-};
-
+};   
+  
 exports.getEmailExits = async (req, res) => {
   let result = false;
   const user = await User.find({}, { email: 1, _id: 0 });

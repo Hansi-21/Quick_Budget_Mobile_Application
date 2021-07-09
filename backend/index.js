@@ -13,13 +13,13 @@ mongo
     app.use(express.json());
     app.use(cors());
     app.listen(3000);
-    console.log("Success");
-
-    app.post("/user", userController.saveUser);
+    console.log("Success");  
+     
+    app.post("/user", userController.saveUser); 
     app.get("/user", userController.getUser);
     app.get("/user/:email/:password", userController.getLoginDetails);
-    app.get("/user/:email",userController.getEmailExits);
+    app.get("/user/:email", userController.getEmailExits);
   })
-  .catch((error) => {
-    console.log(error);
-  });  
+  .catch((error) => {    
+    console.log(error);    
+  });       
