@@ -13,6 +13,8 @@ StatusBar.setBackgroundColor('#330066');
 const Home = () => {
   const navigation = useNavigation();
   const [changeview, setchangeview] = useState(true);
+  let [category, setCategory] = React.useState('');
+  let [year, setYear] = React.useState('');
 
   const data = [
     {
@@ -82,34 +84,100 @@ const Home = () => {
         h={20}
         justifyContent="space-between"
         alignItems="center">
-        <native.Pressable
+        {/* <native.Pressable
           onPress={() => {
             navigation.navigate('Home');
           }}>
           <Icon name="home" size={30} color="white" />
-        </native.Pressable>
+        </native.Pressable> */}
         <native.Text
           color="white"
           fontSize={40}
+          ml={2}
           w="80%"
           fontFamily="SummerInCalifornia">
           Income & Expense Details
         </native.Text>
-        <Icon name="ellipsis-v" size={25} color="white" />
+
+        <native.Menu
+          trigger={triggerProps => {
+            return (
+              <native.Pressable
+                accessibilityLabel="More options menu"
+                {...triggerProps}>
+                <native.HamburgerIcon />
+              </native.Pressable>
+            );
+          }}>
+          <native.Menu.Item
+            onPress={() => {
+              navigation.navigate('Home');
+            }}>
+            Home
+          </native.Menu.Item>
+          <native.Menu.Item>My Phofile</native.Menu.Item>
+          <native.Menu.Item>Setting</native.Menu.Item>
+          <native.Divider />
+          <native.Menu.Item onPress={() => {}}>Logout</native.Menu.Item>
+        </native.Menu>
       </native.HStack>
 
       {changeview ? (
-        <native.Text mt={5} ml={5} fontWeight="bold">
-          Select Year
-        </native.Text>
+        <native.VStack>
+          <native.Select
+            selectedValue={year}
+            minWidth={150}
+            accessibilityLabel="year"
+            placeholder="Year"
+            onValueChange={itemValue => setYear(itemValue)}
+            _selectedItem={{
+              bg: 'cyan.600',
+              endIcon: <native.CheckIcon size={4} />,
+            }}>
+            <native.Select.Item label="2021" value="2021" />
+            <native.Select.Item label="2020" value="2020" />
+            <native.Select.Item label="2019" value="2019" />
+            <native.Select.Item label="2018" value="2018" />
+          </native.Select>
+        </native.VStack>
       ) : (
         <native.Flex flexDirection="row" justifyContent="space-around">
-          <native.Text mt={5} fontWeight="bold" alignItems="center">
-            Select Year
-          </native.Text>
-          <native.Text mt={5} fontWeight="bold">
-            Select Catogery
-          </native.Text>
+          <native.VStack alignItems="center" space={4}>
+            <native.Select
+              selectedValue={year}
+              minWidth={150}
+              accessibilityLabel="year"
+              placeholder="Year"
+              onValueChange={itemValue => setYear(itemValue)}
+              _selectedItem={{
+                bg: 'cyan.600',
+                endIcon: <native.CheckIcon size={4} />,
+              }}>
+              <native.Select.Item label="2021" value="2021" />
+              <native.Select.Item label="2020" value="2020" />
+              <native.Select.Item label="2019" value="2019" />
+              <native.Select.Item label="2018" value="2018" />
+            </native.Select>
+          </native.VStack>
+          <native.VStack alignItems="center" space={4}>
+            <native.Select
+              selectedValue={category}
+              minWidth={150}
+              accessibilityLabel="catogery"
+              placeholder="Catogery"
+              onValueChange={itemValue => setCategory(itemValue)}
+              _selectedItem={{
+                bg: 'cyan.600',
+                endIcon: <native.CheckIcon size={4} />,
+              }}>
+              <native.Select.Item label="Foods" value="food" />
+              <native.Select.Item label="Bills" value="bills" />
+              <native.Select.Item label="Health" value="health" />
+              <native.Select.Item label="Tax" value="tax" />
+              <native.Select.Item label="Repeir" value="repeir" />
+              <native.Select.Item label="Extra" value="extra" />
+            </native.Select>
+          </native.VStack>
         </native.Flex>
       )}
 
@@ -158,6 +226,7 @@ const Home = () => {
             w="175px"
             h="60px"
             borderRadius="50px"
+            bg="#d63031"
             startIcon={<Icon name="arrow-down" size={20} color="white" />}
             onPress={() => {
               setchangeview(false);
