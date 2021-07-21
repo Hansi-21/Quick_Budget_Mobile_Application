@@ -18,7 +18,7 @@ const Login = () => {
   function login() {
     axios({
       method: 'GET',
-      url: `http://192.168.210.53:3000/user/${email}/${password}`,
+      url: `http://192.168.156.53:3000/user/${email}/${password}`,
     })
       .then(res => {
         if (!res.data) {
@@ -88,7 +88,7 @@ const Login = () => {
             />
             {errmsg ? (
               <native.Text color="red.500" ml={10} mb={4}>
-                Username or Password Wrong
+                Incorrect Username or Password
               </native.Text>
             ) : null}
             <native.Button

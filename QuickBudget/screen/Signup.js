@@ -25,7 +25,7 @@ const Signup = () => {
   function isEmailExist() {
     return axios({
       method: 'GET',
-      url: `http://192.168.210.53:3000/user/${email}`,
+      url: `http://192.168.156.53:3000/user/${email}`,
     })
       .then(res => {
         return res.data;
@@ -47,7 +47,7 @@ const Signup = () => {
         } else {
           axios({
             method: 'POST',
-            url: 'http://192.168.210.53:3000/user/',
+            url: 'http://192.168.156.53:3000/user/',
             data: {
               name: name,
               email: email,

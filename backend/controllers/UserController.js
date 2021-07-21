@@ -4,12 +4,12 @@ exports.saveUser = async (req, res) => {
   const userData = new User(req.body);
   await userData.save();
   res.send(true);
-  console.log(req.body);
-};
+  console.log(req.body);        
+};   
 
 exports.getUser = async (req, res) => {
   const user = await User.find();
-  res.send(user);
+  res.send(user);   
 };
 
 exports.getLoginDetails = async (req, res) => {
@@ -21,16 +21,18 @@ exports.getLoginDetails = async (req, res) => {
     if (
       req.params.email == data.email &&
       req.params.password == data.password
-    ) {  
+    ) {
       result = true;
     }
   });
   res.send(result);
-};   
-  
+};
+
 exports.getEmailExits = async (req, res) => {
+  console.log("email checked");
   let result = false;
   const user = await User.find({}, { email: 1, _id: 0 });
+  console.log(user);
   user.forEach((data) => {
     if (req.params.email == data.email) {
       result = true;

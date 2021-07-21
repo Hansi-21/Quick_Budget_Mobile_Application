@@ -6,20 +6,20 @@ const cors = require("cors");
 
 const userController = require("./controllers/UserController");
 
-mongo
+mongo  
   .connect("mongodb://localhost:27017/QuickBudget")
-  .then(() => {    
-    const app = express();
-    app.use(express.json());
+  .then(() => {      
+    const app = express();    
+    app.use(express.json());     
     app.use(cors());
-    app.listen(3000);
-    console.log("Success"); 
-
-    app.post("/user", userController.saveUser);
-    app.get("/user", userController.getUser);
+    app.listen(3000);    
+    console.log("Server Started..");     
+    app.post("/user", userController.saveUser);  
+    app.get("/user", userController.getUser);  
     app.get("/user/:email/:password", userController.getLoginDetails);
     app.get("/user/:email", userController.getEmailExits);
   })
   .catch((error) => {
     console.log(error);
   });
+      
